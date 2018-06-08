@@ -17,7 +17,7 @@ namespace Selenium_CSharp
         ID,
         Name,
         LinkText,
-        CssName,
+        CSSName,
         ClassName
     }
 }
