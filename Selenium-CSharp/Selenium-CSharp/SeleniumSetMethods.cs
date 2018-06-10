@@ -8,20 +8,20 @@ using System.Threading.Tasks;
 
 namespace Selenium_CSharp
 {
-    class SeleniumSetMethods
+    static class SeleniumSetMethods
     {
 
-        public static void EnterText(IWebElement element, string value)
+        public static void EnterText(this IWebElement element, string value)
         {
             element.SendKeys(value);
         }
 
-        public static void click(IWebElement element)
+        public static void click(this IWebElement element)
         {
             element.Click();
         }
 
-        public static void SelectDropDown(IWebElement element, string value)
+        public static void SelectDropDown(this IWebElement element, string value)
         {
             new SelectElement(element).SelectByText(value);
         }

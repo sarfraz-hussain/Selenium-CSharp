@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace Selenium_CSharp
 {
-    class SeleniumGetMethods
+   static class SeleniumGetMethods
     {
 
-        public static string GetText(IWebElement element)
+        public static string GetText(this IWebElement element)
         {
            return element.GetAttribute("value");
         }
 
-        public static string GetTextFromDDL(IWebElement element)
+        public static string GetTextFromDDL(this IWebElement element)
         {
             return new SelectElement(element).AllSelectedOptions.SingleOrDefault().Text;
         }
