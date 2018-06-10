@@ -28,8 +28,11 @@ namespace Selenium_CSharp
         #region Main Page - Page Actions
         public void selectRecruitment(string KeyWords)
         {
-            btnRecruitment.Click();
-            txtKeyWords.SendKeys(KeyWords);
+            SeleniumSetMethods.click(btnRecruitment);
+            SeleniumSetMethods.EnterText(txtKeyWords, KeyWords);
+           
+            // btnRecruitment.Click();
+           // txtKeyWords.SendKeys(KeyWords);
         }
 
         #endregion

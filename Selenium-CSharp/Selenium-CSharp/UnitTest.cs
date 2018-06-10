@@ -22,54 +22,31 @@ namespace Selenium_CSharp
         }
 
         [Test]
-        public void Executetest()
+        public void VerifyLogIN()
         {
             PageObjects_LogIn pageLogIN = new PageObjects_LogIn();
 
 
             // page Actions - Login
-           PageObjects_MainPage pageMain = pageLogIN.Login("Admin", "admin");
-           pageMain.selectRecruitment("Engineering");
-            
-            
-            /* 
-           
-            //Set User Name
-            SeleniumSetMethods.EnterText("txtUsername", "Admin", PropertyType.ID);
-           
-            //Set Password
-            SeleniumSetMethods.EnterText("txtPassword", "admin", PropertyType.ID);
-
-            //Click Submit Button
-            SeleniumSetMethods.click("Submit", PropertyType.Name);
-
-            //Click on Recruitment Tab
-            SeleniumSetMethods.click("menu_recruitment_viewRecruitmentModule", PropertyType.ID);
-            SeleniumSetMethods.EnterText( "candidateSearch_keywords", "administration", PropertyType.ID);
-
-            //Click on job title Drop Down
-            SeleniumSetMethods.SelectDropDown("candidateSearch_jobTitle", "Sales Manager", PropertyType.ID);
-            
-
-            //Click checkbox
-            SeleniumSetMethods.click("ohrmList_chkSelectAll", PropertyType.ID);
-
-
-            //Get Selected DDL
-            Console.WriteLine("Selected Drop Down is: " + SeleniumGetMethods.GetTextFromDDL("candidateSearch_jobTitle", PropertyType.ID));
-            //Get Selected Keyword
-            Console.WriteLine("Selected Keyword is: " + SeleniumGetMethods.GetText( "candidateSearch_keywords", PropertyType.ID));
-
-    */
-
-
+            pageLogIN.Login("Admin", "admin");           
         }
 
+        [Test]
+        public void VerifyMainPage()
+        {
+            PageObjects_LogIn pageLogIN = new PageObjects_LogIn();
+
+
+            // page Actions - Login
+            PageObjects_MainPage pageMain = pageLogIN.Login("Admin", "admin");
+            pageMain.selectRecruitment("Engineering");
+
+        }
 
         [TearDown]
         public void clean()
         {
-          //  propertiesCollection.driver.Close();
+          propertiesCollection.driver.Close();
         }
     }
 }

@@ -40,9 +40,9 @@ namespace Selenium_CSharp
 
         public PageObjects_MainPage Login(string username, string password)
         {
-            tbUserName.SendKeys(username);
-            tbPassword.SendKeys(password);
-            btnSubmit.Click();
+            SeleniumSetMethods.EnterText(tbUserName, username);
+            SeleniumSetMethods.EnterText(tbPassword, password);
+            SeleniumSetMethods.click(btnSubmit);
             return new PageObjects_MainPage();
         }
 
