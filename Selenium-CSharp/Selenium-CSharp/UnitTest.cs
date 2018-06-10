@@ -24,6 +24,16 @@ namespace Selenium_CSharp
         [Test]
         public void Executetest()
         {
+            PageObjects_LogIn pageLogIN = new PageObjects_LogIn();
+
+
+            // page Actions - Login
+           PageObjects_MainPage pageMain = pageLogIN.Login("Admin", "admin");
+           pageMain.selectRecruitment("Engineering");
+            
+            
+            /* 
+           
             //Set User Name
             SeleniumSetMethods.EnterText("txtUsername", "Admin", PropertyType.ID);
            
@@ -50,6 +60,8 @@ namespace Selenium_CSharp
             //Get Selected Keyword
             Console.WriteLine("Selected Keyword is: " + SeleniumGetMethods.GetText( "candidateSearch_keywords", PropertyType.ID));
 
+    */
+
 
         }
 
@@ -57,7 +69,7 @@ namespace Selenium_CSharp
         [TearDown]
         public void clean()
         {
-            propertiesCollection.driver.Close();
+          //  propertiesCollection.driver.Close();
         }
     }
 }
