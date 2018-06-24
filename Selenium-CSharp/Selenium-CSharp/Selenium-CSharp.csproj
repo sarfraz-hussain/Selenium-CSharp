@@ -64,6 +64,7 @@
     <Compile Include="SeleniumSetMethods.cs" />
     <Compile Include="SeleniumGetMethods.cs" />
     <Compile Include="UnitTest.cs" />
+    <Compile Include="Validations.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
