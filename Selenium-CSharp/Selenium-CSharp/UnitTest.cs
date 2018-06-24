@@ -17,7 +17,8 @@ namespace Selenium_CSharp
         public void Initilize()
         {
             propertiesCollection.driver = new ChromeDriver();
-            propertiesCollection.driver.Navigate().GoToUrl("http://opensource.demo.orangehrmlive.com/");
+
+            propertiesCollection.driver.Navigate().GoToUrl(new PageObjects_LogIn().pageUrl);
             Console.WriteLine("Chrome Driver Intilize");
         }
 
@@ -25,8 +26,7 @@ namespace Selenium_CSharp
         public void VerifyLogIN()
         {
             PageObjects_LogIn pageLogIN = new PageObjects_LogIn();
-
-
+            
             // page Actions - Login
             pageLogIN.Login("Admin", "admin");           
         }
