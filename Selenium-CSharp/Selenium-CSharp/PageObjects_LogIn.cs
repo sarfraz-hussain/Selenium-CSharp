@@ -42,6 +42,10 @@ namespace Selenium_CSharp
         {
             tbUserName.EnterText(username);
             tbPassword.EnterText(password);
+
+            Console.WriteLine("UserName is:" + tbUserName.GetText());
+            Console.WriteLine("Password is:" + tbPassword.GetText());
+
             btnSubmit.click();
             return new PageObjects_MainPage();
 
