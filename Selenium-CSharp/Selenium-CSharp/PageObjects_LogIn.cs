@@ -48,11 +48,14 @@ namespace Selenium_CSharp
 
         public PageObjects_MainPage Login(string username, string password)
         {
+
             tbUserName.EnterText(username);
             tbPassword.EnterText(password);
 
             Console.WriteLine("UserName is:" + tbUserName.GetText());
             Console.WriteLine("Password is:" + tbPassword.GetText());
+            Console.WriteLine("UserName is:" + tbUserName.validateIsPresent().ToString());
+            Console.WriteLine("Password is:" + tbPassword.validateIsPresent().ToString());
 
             btnSubmit.click();
             return new PageObjects_MainPage();
