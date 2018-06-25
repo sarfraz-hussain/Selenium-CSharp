@@ -20,10 +20,10 @@ namespace Selenium_CSharp
                 return element.Displayed;
             }
 
-            //public void validateTextInElement(IWebDriver driver, By element, String text)
+            //public void validatetextinelement(iwebdriver driver, by element, string text)
             //{
-            //    String findElement = driver.FindElement(element).Text;
-            //    Assert.IsTrue(findElement.Equals(text));
+            //    string findelement = driver.findelement(element).text;
+            //    assert.istrue(findelement.equals(text));
             //}
         }
 
