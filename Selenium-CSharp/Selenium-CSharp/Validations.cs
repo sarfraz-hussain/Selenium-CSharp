@@ -9,11 +9,10 @@ namespace Selenium_CSharp
 {
         static class Validations
         {
-            //public void validateScreenByUrl(IWebDriver driver, String screenUrl)
-            //{
-            //    String currentURL = driver.Url;
-            //    Assert.IsTrue(currentURL.Equals(screenUrl));
-            //}
+            public static bool validatePageByUrl(this IWebDriver driver, String screenUrl)
+            {
+                return (driver.Url == screenUrl);
+            }
 
             public static bool validateIsPresent(this IWebElement element)
             {
