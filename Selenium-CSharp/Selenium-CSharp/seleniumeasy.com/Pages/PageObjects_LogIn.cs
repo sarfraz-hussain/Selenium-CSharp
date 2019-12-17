@@ -17,13 +17,13 @@ namespace Selenium_CSharp
 
             PageFactory.InitElements(propertiesCollection.driver, this);
 
-        }   
+        }
 
 
         #region Login Page - Web Elements
 
         //User Name
-        [FindsBy(How = How.Id , Using = "txtUsername")]
+        [FindsBy(How = How.Id, Using = "txtUsername")]
         [CacheLookup]
         private IWebElement tbUserName { get; set; }
 
@@ -40,13 +40,13 @@ namespace Selenium_CSharp
 
         public readonly string pageLoadedText = "";
 
-        public readonly string pageUrl = "http://opensource.demo.orangehrmlive.com/";
+        public readonly string pageUrl = "https://www.seleniumeasy.com/test/";
 
         #endregion
 
         #region Login Page - Page Actions
 
-        public PageObjects_MainPage Login(string username, string password)
+        public MainPage Login(string username, string password)
         {
 
             tbUserName.EnterText(username);
@@ -58,14 +58,22 @@ namespace Selenium_CSharp
             Console.WriteLine("Password is:" + tbPassword.ValidateIsPresent().ToString());
             Console.WriteLine("Page URL Matches:" + propertiesCollection.driver.ValidatePageByUrl(this.pageUrl).ToString());
 
-           
+
             btnSubmit.click();
-            return new PageObjects_MainPage();
+            return new MainPage();
 
             //  SeleniumSetMethods.EnterText(tbUserName, username);
             //  SeleniumSetMethods.EnterText(tbPassword, password);
             //  SeleniumSetMethods.click(btnSubmit);
             //  return new PageObjects_MainPage();
+        }
+
+        public MainPage ValidatePageLoaded()
+        {
+                       
+            Console.WriteLine("Page URL Matches:" + propertiesCollection.driver.ValidatePageByUrl(this.pageUrl).ToString());
+            return new MainPage();
+
         }
 
         #endregion
