@@ -54,9 +54,9 @@ namespace Selenium_CSharp
 
             Console.WriteLine("UserName is:" + tbUserName.GetText());
             Console.WriteLine("Password is:" + tbPassword.GetText());
-            Console.WriteLine("UserName is:" + tbUserName.validateIsPresent().ToString());
-            Console.WriteLine("Password is:" + tbPassword.validateIsPresent().ToString());
-            Console.WriteLine("Page URL Matches:" + propertiesCollection.driver.validatePageByUrl(this.pageUrl).ToString());
+            Console.WriteLine("UserName is:" + tbUserName.ValidateIsPresent().ToString());
+            Console.WriteLine("Password is:" + tbPassword.ValidateIsPresent().ToString());
+            Console.WriteLine("Page URL Matches:" + propertiesCollection.driver.ValidatePageByUrl(this.pageUrl).ToString());
 
            
             btnSubmit.click();

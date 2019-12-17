@@ -9,12 +9,12 @@ namespace Selenium_CSharp
 {
         static class Validations
         {
-            public static bool validatePageByUrl(this IWebDriver driver, String screenUrl)
+            public static bool ValidatePageByUrl(this IWebDriver driver, String screenUrl)
             {
                 return (driver.Url == screenUrl);
             }
 
-            public static bool validateIsPresent(this IWebElement element)
+            public static bool ValidateIsPresent(this IWebElement element)
             {
                 return element.Displayed;
             }

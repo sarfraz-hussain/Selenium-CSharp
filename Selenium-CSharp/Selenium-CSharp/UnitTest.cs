@@ -39,12 +39,12 @@ namespace Selenium_CSharp
 
             // page Actions - Login
             PageObjects_MainPage pageMain = pageLogIN.Login("Admin", "admin");
-            pageMain.selectRecruitment("Engineering");
+            pageMain.SelectRecruitment("Engineering");
 
         }
 
         [TearDown]
-        public void clean()
+        public void Clean()
         {
           propertiesCollection.driver.Close();
         }
