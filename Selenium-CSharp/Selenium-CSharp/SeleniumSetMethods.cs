@@ -6,24 +6,84 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Selenium_CSharp
 {
-    static class SeleniumSetMethods
+
+     static class SeleniumSetMethods
     {
 
-        public static void EnterText(this IWebElement element, string value)
+        public static Status EnterText(this IWebElement element, string value)
         {
-            element.SendKeys(value);
+            Status status = new Status(false);
+            try
+            {
+                element.SendKeys(value);
+                return status;
+            }
+            catch (Exception e)
+            {
+                status.ErrorOccurred = true;
+                status.ReturnedMessage += e.StackTrace;
+                status.ReturnedValue = 1;
+                return status;
+                //throw;
+            }
+
         }
 
-        public static void click(this IWebElement element)
+        public static Status click(this IWebElement element)
         {
-            element.Click();
+            Status status = new Status(false);
+            try
+            {
+                element.Click();
+                return status;
+            }
+            catch (Exception e)
+            {
+                status.ErrorOccurred = true;
+                status.ReturnedMessage += e.StackTrace;
+                status.ReturnedValue = 1;
+                return status;
+                //throw;
+            }
         }
 
-        public static void SelectDropDown(this IWebElement element, string value)
+        public static Status SelectDropDown(this IWebElement element, string value)
         {
-            new SelectElement(element).SelectByText(value);
+            Status status = new Status(false);
+            try
+            {
+                new SelectElement(element).SelectByValue(value);
+                return status;
+            }
+            catch (Exception e)
+            {
+                status.ErrorOccurred = true;
+                status.ReturnedMessage += e.StackTrace;
+                status.ReturnedValue = 1;
+                return status;
+                //throw;
+            } 
         }
     }
+
+    //public class Status
+    //{
+    //    public bool ErrorOccurred { get; set; }
+    //    public String ErrorMessage { get; set; }
+    //    public int ErrorValue{ get; set; }
+
+
+    //    public Status()
+    //    {
+    //        this.ErrorOccurred = false;
+    //        this.ErrorMessage = null;
+    //        this.ErrorValue = 0;
+
+    //    }
+
+    //}
 }
+

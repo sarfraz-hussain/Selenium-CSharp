@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -16,22 +17,32 @@ namespace Selenium_CSharp
             PageFactory.InitElements(propertiesCollection.driver, this);
         }
 
+        Status status = new Status(false);
+
         #region Main Page - Page Elements
 
-        [FindsBy(How = How.Id, Using = "menu_recruitment_viewRecruitmentModule")]
-        private IWebElement btnRecruitment { get; set; }
-
-        [FindsBy(How = How.Id, Using = "candidateSearch_keywords")]
-        private IWebElement txtKeyWords { get; set; }
 
         [FindsBy(How = How.Id, Using = "site-name")]
+        [CacheLookup]
         private IWebElement SiteLoadLocator { get; set; }
+
+        // Drop Down List InputForm
+        [FindsBy(How = How.ClassName, Using = "dropdown-toggle")]
+        [CacheLookup]
+        private IWebElement DDL_InputForm { get; set; }
+
+        //[FindsBy(How = How.LinkText, Using = "Simple Form Demo")]
+        [FindsBy(How = How.ClassName, Using = "dropdown-menu1")]
+        [CacheLookup]
+        private IWebElement DDL_InputForm_Option1 { get; set; }
+        
+        
 
         #endregion
 
         #region Page URL
 
-        public readonly string pageUrl = "https://www.seleniumeasy.com/test/";
+        public  string pageUrl = "https://www.seleniumeasy.com/test/";
 
         #endregion
 
@@ -40,22 +51,23 @@ namespace Selenium_CSharp
 
         public void SelectRecruitment(string KeyWords)
         {
-            btnRecruitment.click();
-            txtKeyWords.EnterText(KeyWords);
            
         }
 
-        public MainPage ValidatePageLoaded()
+        public Status ValidatePageLoaded()
         {
 
-            //SiteLoadLocator.click();  
-
-            //Console.WriteLine("Page URL Matches:" + propertiesCollection.driver.ValidatePageByUrl(this.pageUrl).ToString());
-
-            IWebDriver currentpage = propertiesCollection.driver;
-
-            return new MainPage();
-
+            //Console.WriteLine("Page URL Matches:" + propertiesCollection.driver.ValidatePageByUrl(this.pageUrl).ToString());       
+            status = DDL_InputForm.click();
+            //string str = DDL_InputForm.Text;
+  
+            status += DDL_InputForm_Option1.SelectDropDown("");
+            //MainPage page = new MainPage
+            //{
+            //    pageUrl = propertiesCollection.driver.Url
+            //};
+            //return page;
+            return status;
         }
 
 
