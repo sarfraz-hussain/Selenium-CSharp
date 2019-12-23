@@ -11,14 +11,44 @@ namespace Selenium_CSharp
    static class SeleniumGetMethods
     {
 
-        public static string GetText(this IWebElement element)
+        public static Status GetText(this IWebElement element)
         {
-           return element.GetAttribute("value");
+            Status status = new Status(false);
+            try
+            {
+ 
+                //status.CustomMessage = element.GetAttribute("text");
+                status.CustomMessage = element.Text;
+                return status;
+            }
+            catch (Exception e)
+            {
+                status.ErrorOccurred = true;
+                status.ReturnedMessage += e.StackTrace;
+                status.ReturnedValue = 1;
+                return status;
+                /*throw*/;
+            }
+            
         }
 
-        public static string GetTextFromDDL(this IWebElement element)
+        public static Status GetTextFromDDL(this IWebElement element)
         {
-            return new SelectElement(element).AllSelectedOptions.SingleOrDefault().Text;
+            Status status = new Status(false);
+            try
+            {
+                status.CustomMessage = new SelectElement(element).AllSelectedOptions.SingleOrDefault().Text;
+                return status;
+            }
+            catch (Exception e)
+            {
+                status.ErrorOccurred = true;
+                status.ReturnedMessage += e.StackTrace;
+                status.ReturnedValue = 1;
+                return status;
+                /*throw*/;
+            }
+            
         }
 
      }

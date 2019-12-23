@@ -20,8 +20,7 @@ namespace Selenium_CSharp
         {
             propertiesCollection.driver = new ChromeDriver();
             propertiesCollection.driver.Manage().Window.Maximize();
-            propertiesCollection.driver.Navigate().GoToUrl(new PageObjects_LogIn().pageUrl);
-            Console.WriteLine("Chrome Driver Intilize");
+            propertiesCollection.driver.Navigate().GoToUrl(new mPaige().pageUrl);
             //WebDriverWait wait = new WebDriverWait(propertiesCollection.driver, new TimeSpan(0, 0, 30));
             //propertiesCollection.driver.Manage().Timeouts().ImplicitWait = new TimeSpan(0, 2, 30);
         }
@@ -29,9 +28,14 @@ namespace Selenium_CSharp
         [Test]
         public void VerifyMainPage()
         {
-            MainPage page = new MainPage();
-            status =  page.ValidatePageLoaded();
-            Assert.IsFalse(status.ErrorOccurred);
+            mPaige page = new mPaige(propertiesCollection.driver);
+            Status status = new Status(false); 
+
+
+            Assert.IsFalse((status += page.ClickInputForms1Link()).ErrorOccurred, status.ReturnedMessage);
+            Assert.IsFalse((status += page.ClickAjaxFormSubmit1Link()).ErrorOccurred, status.ReturnedMessage);
+
+
         }
 
         [TearDown]

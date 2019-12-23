@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="seleniumeasy.com\Pages\FirstDemoForm.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="seleniumeasy.com\Pages\PageObjects_LogIn.cs" />
     <Compile Include="seleniumeasy.com\Pages\MainPage.cs" />

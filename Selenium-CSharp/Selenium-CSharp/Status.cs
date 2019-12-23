@@ -43,6 +43,7 @@ namespace Selenium_CSharp
         private bool errorOccurred;
         private string returnedMessage;
         private int returnedValue;
+        private string customMessage;
 
         #region Constructor
 
@@ -51,6 +52,7 @@ namespace Selenium_CSharp
             this.returnedMessage = "";
             this.errorOccurred = errorOccurred;
             this.returnedValue = 0;
+            this.customMessage = string.Empty;
         }
 
         public Status(bool errorOccurred, string returnedMessage)
@@ -58,6 +60,7 @@ namespace Selenium_CSharp
             this.returnedMessage = returnedMessage;
             this.errorOccurred = errorOccurred;
             this.returnedValue = 0;
+            this.customMessage = string.Empty;
         }
 
         public Status(bool errorOccurred, string returnedMessage, int returnedValue)
@@ -65,6 +68,7 @@ namespace Selenium_CSharp
             this.returnedMessage = returnedMessage;
             this.errorOccurred = errorOccurred;
             this.returnedValue = returnedValue;
+            this.customMessage = string.Empty;
         }
 
         #endregion
@@ -80,6 +84,18 @@ namespace Selenium_CSharp
             get
             {
                 return errorOccurred;
+            }
+        }
+
+        public string CustomMessage
+        {
+            set
+            {
+                customMessage = value;
+            }
+            get
+            {
+                return customMessage;
             }
         }
 
@@ -158,6 +174,7 @@ namespace Selenium_CSharp
 
             string linefeed = "\n\n";
             returnStatus1.ReturnedMessage += linefeed += returnStatus2.ReturnedMessage;
+            returnStatus1.CustomMessage += linefeed += returnStatus2.CustomMessage;
             returnStatus1.ErrorOccurred |= returnStatus2.ErrorOccurred;
             returnStatus1.ReturnedValue += returnStatus2.ReturnedValue;
             return returnStatus1;
